@@ -21,18 +21,26 @@ class QueryController extends Controller{
     }
 
     //Puntajes por equipo
-    public function query3(){
-
-        $positions=Detail::select(
-            
+    public function query3(){ 
+        $positions=Detail::select( 
             "team_id", 
             DB::raw("SUM(puntos) as total"),
         )->groupBy("team_id")->orderBy('total' ,'DESC')->get(); 
-       
-        return view('Query.query3')->with('positions',$positions);
+       return view('Query.query3')->with('positions',$positions);
     }
 
 
+    public function query4(){ 
+        $parGanados=Detail::select('game_id','team_id','goles')->where('resultado', 1)->get();  
+        return view('Query.query4')->with('parganados',$parGanados);  
+         
+    }
+
+    public function query5(){ 
+        $parPerdidos=Detail::select('game_id','team_id','goles')->where('resultado', 0)->get();  
+        return view('Query.query5')->with('parPerdidos',$parPerdidos);  
+         
+    }
 
 
 }

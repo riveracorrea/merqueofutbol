@@ -22,6 +22,8 @@ Route::controller(QueryController::class)->group(function () {
     Route::get('/Query1', 'query1');
     Route::get('/Query2', 'query2');
     Route::get('/Query3', 'query3');
+    Route::get('/Query4', 'query4');
+    Route::get('/Query5', 'query5');
      
 });
 
